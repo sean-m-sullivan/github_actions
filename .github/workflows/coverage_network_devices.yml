@@ -55,10 +55,10 @@ jobs:
       - name: Run Coverage tests
         run: |
           pytest tests -v --cov-report xml --cov=./
-        working-directory: ${{ steps.identify.outputs.collection_path }}
+        working-directory: ${{ env.source_directory }}
 
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v3
         with:
-          directory: ${{ steps.identify.outputs.collection_path }}
+          directory: ${{ env.source_directory }}
           fail_ci_if_error: false
